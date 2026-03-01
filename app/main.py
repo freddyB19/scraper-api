@@ -1,8 +1,7 @@
 from fastapi import FastAPI
 
+from routes.graphql.schemas import graphql_app
+
 app = FastAPI()
 
-
-@app.get("/")
-async def index() -> dict[str, str]:
-	return {"message": "Hola Mundo"}
+app.include_router(graphql_app, prefix = "/graphql")
