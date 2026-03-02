@@ -6,6 +6,7 @@ readme = "README.md"
 requires-python = ">=3.13"
 dependencies = [
     "fastapi[standard]>=0.134.0",
+    "pydantic-settings>=2.13.1",
     "python-dotenv>=1.2.1",
     "strawberry-graphql[fastapi]>=0.307.1",
 ]
@@ -16,6 +17,7 @@ asyncio_mode = "auto"
 
 [dependency-groups]
 dev = [
+    "faker>=40.5.1",
     "httpx>=0.28.1",
     "pytest>=9.0.2",
 ]
