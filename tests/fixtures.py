@@ -161,4 +161,44 @@ RESPONSE_JSON_GAMES = [
 	}
 ]
 
-__all__ = ["JSON_GAMES"]
+RESPONSE_EMPTY_JSON_GAMES = [
+	{
+		"page": {
+			"name": "lol",
+			"data": {
+				"champions": [],
+				"noticias": [],
+				"notas": [],
+			}
+		},
+	},
+	{
+		"page": {
+			"name": "easport",
+			"data": {
+				"noticias": [],
+				"novedades": [],
+				"proximamente": [],
+				"gratuitos": [],
+				"actualizaciones": [],
+			}
+		},
+	},
+	{
+		"page": {
+			"name": "iracing",
+			"data": {
+				"cars": [],
+				"tracks": [],
+				"series": [],
+				"seasons": [],
+				"news": []
+			}
+		}
+	}
+]
+
+__all__ = [
+	"JSON_GAMES", 
+	"RESPONSE_EMPTY_JSON_GAMES"
+]
