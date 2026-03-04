@@ -292,7 +292,7 @@ class Iracing:
 class MarcaVideogames(NodeConnection):
 	url: str | None
 	meta: str | None
-	autor: str | None
+	author: str | None
 	title: str | None
 	image: str | None
 
@@ -305,7 +305,7 @@ class Marca:
 				code = index,
 				url = article.get("url"),
 				meta = article.get("meta"),
-				autor = article.get("autor"),
+				author = article.get("autor"),
 				title = article.get("titulo"),
 				image = article.get("imagen")
 			)

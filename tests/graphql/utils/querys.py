@@ -303,3 +303,158 @@ query MyQuery($count: Int=3) {
   }
 }
 """
+
+MARCA_GAMES = """
+query MyQuery($count: Int=3) {
+  marca {
+    games(first: $count) {
+      edges {
+        cursor
+        node {
+          url
+          meta
+          author
+          title
+          image
+        }
+      }
+      pageInfo {
+        hasNextPage
+        hasPreviousPage
+      }
+    }
+  }
+}
+"""
+
+LANACION_GAMES = """
+query MyQuery($count: Int=3) {
+  lanacion {
+    games(first: $count) {
+      edges {
+        cursor
+        node {
+          url
+          date
+          image
+          title
+        }
+      }
+      pageInfo {
+        hasNextPage
+        hasPreviousPage
+      }
+    }
+  }
+}
+"""
+
+LANACION_TEC = """
+query MyQuery($count: Int=3) {
+  lanacion {
+    tecnology(first: $count) {
+      edges {
+        cursor
+        node {
+          url
+          date
+          image
+          title
+        }
+      }
+      pageInfo {
+        hasNextPage
+        hasPreviousPage
+      }
+    }
+  }
+}
+"""
+
+WIRED_ROBOTS = """
+query MyQuery($count: Int=3) {
+  wired {
+    robots(first: $count) {
+      edges {
+        cursor
+        node {
+          url
+          title
+          image
+          detail
+        }
+      }
+      pageInfo {
+        hasNextPage
+        hasPreviousPage
+      }
+    }
+  }
+}
+"""
+
+WIRED_BIO = """
+query MyQuery($count: Int=3) {
+  wired {
+    biotechnology(first: $count) {
+      edges {
+        cursor
+        node {
+          url
+          title
+          image
+          detail
+        }
+      }
+      pageInfo {
+        hasNextPage
+        hasPreviousPage
+      }
+    }
+  }
+}
+"""
+
+WIRED_NEURO = """
+query MyQuery($count: Int=3) {
+  wired {
+    neuroscience(first: $count) {
+      edges {
+        cursor
+        node {
+          url
+          title
+          image
+          detail
+        }
+      }
+      pageInfo {
+        hasNextPage
+        hasPreviousPage
+      }
+    }
+  }
+}
+"""
+
+WIRED_SPACE = """
+query MyQuery($count: Int=3) {
+  wired {
+    space(first: $count) {
+      edges {
+        cursor
+        node {
+          url
+          title
+          image
+          detail
+        }
+      }
+      pageInfo {
+        hasNextPage
+        hasPreviousPage
+      }
+    }
+  }
+}
+"""

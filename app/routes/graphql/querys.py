@@ -2,8 +2,9 @@ import strawberry
 
 from .types import LOL, Iracing, Easport, Marca, LaNacion, Wired
 
+from services.fetch import sync_get_data
+from services.news_services import get_data_news
 from services.games_services import get_data_game
-from services.fetch import async_get_data, sync_get_data
 
 
 @strawberry.type
@@ -60,4 +61,42 @@ class Query:
             "tracks": tracks,
             "series": series,
             "seasons": seasons
+        }
+
+    @strawberry.field
+    def marca(self) -> Marca:
+        name = "marca"
+        data = sync_get_data()
+
+        marca = get_data_news(data, name = name)
+        return {"marca": marca}
+
+    @strawberry.field
+    def lanacion(self) -> LaNacion:
+        name = "la nación"
+        data = sync_get_data()
+
+        games = get_data_news(data, name = name)
+        tecnology = get_data_news(data, name = name, page = "la nación tecnología")
+
+        return {
+            "games": games,
+            "tecnology": tecnology
+        }
+
+    @strawberry.field
+    def wired(self) -> Wired:
+        name = "wired"
+        data = sync_get_data()
+
+        space = get_data_news(data, name = name, page = "wired espacio")
+        robots = get_data_news(data, name = name, page = "wired robots")
+        neuroscience = get_data_news(data, name = name, page = "wired neurociencia")
+        biotechnology = get_data_news(data, name = name, page = "wired biotecnología")
+
+        return {
+            "space": space,
+            "robots": robots,
+            "neuroscience": neuroscience,
+            "biotechnology": biotechnology
         }
