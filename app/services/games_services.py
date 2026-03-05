@@ -1,7 +1,8 @@
 from typing import Any
 from itertools import chain
 
-type Response = list[dict[str, str]]
+
+type Response = list[dict[str, Any]]
 type GameData = list[dict[str, str | list[str]]]
 
 
