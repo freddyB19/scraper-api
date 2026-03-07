@@ -1,9 +1,12 @@
 from typing import Literal
 
-from fastapi import APIRouter, Depends, status
+from fastapi import APIRouter, Depends, Request, status
 
 from fastapi_pagination import paginate
 from fastapi_pagination.links import Page
+
+from slowapi import Limiter
+from slowapi.util import get_remote_address
 
 from models import games
 from services import games_commands
@@ -19,6 +22,7 @@ async def get_json():
 
 
 router  = APIRouter(prefix = '/game')
+limiter = Limiter(key_func=get_remote_address, strategy = "fixed-window")
 
 
 @router.get(
@@ -26,7 +30,8 @@ router  = APIRouter(prefix = '/game')
 	status_code = status.HTTP_200_OK,
 	response_model = Page[games.LOLChampion]
 )
-async def lol_champions(data: ResponseJson = Depends(get_json)):
+@limiter.limit("30/minute", per_method = True)
+async def lol_champions(request: Request, data: ResponseJson = Depends(get_json)):
 	return paginate(games_commands.get_lol_champions(data))
 
 @router.get(
@@ -34,7 +39,8 @@ async def lol_champions(data: ResponseJson = Depends(get_json)):
 	status_code = status.HTTP_200_OK,
 	response_model = Page[games.LOLArticle]
 )
-async def lol_articles(detail: LOLTypeArticle, data: ResponseJson =  Depends(get_json)):
+@limiter.limit("30/minute", per_method = True)
+async def lol_articles(request: Request, detail: LOLTypeArticle, data: ResponseJson =  Depends(get_json)):
 	
 	return paginate(games_commands.get_lol_articles(data, detail = detail))
 
@@ -44,7 +50,8 @@ async def lol_articles(detail: LOLTypeArticle, data: ResponseJson =  Depends(get
 	status_code = status.HTTP_200_OK,
 	response_model = Page[games.EasportNews]
 )
-async def easport_news(data: ResponseJson = Depends(get_json)):
+@limiter.limit("30/minute", per_method = True)
+async def easport_news(request: Request, data: ResponseJson = Depends(get_json)):
 	return paginate(
 		games_commands.get_easport_news(data)
 	)
@@ -54,7 +61,8 @@ async def easport_news(data: ResponseJson = Depends(get_json)):
 	status_code = status.HTTP_200_OK,
 	response_model = Page[games.EasportSoon]
 )
-async def easport_soon(data: ResponseJson = Depends(get_json)):
+@limiter.limit("30/minute", per_method = True)
+async def easport_soon(request: Request, data: ResponseJson = Depends(get_json)):
 	return paginate(
 		games_commands.get_easport_soon(data)
 	)
@@ -64,7 +72,8 @@ async def easport_soon(data: ResponseJson = Depends(get_json)):
 	status_code = status.HTTP_200_OK,
 	response_model = Page[games.EasportUpdate]
 )
-async def easport_updates(data: ResponseJson = Depends(get_json)):
+@limiter.limit("30/minute", per_method = True)
+async def easport_updates(request: Request, data: ResponseJson = Depends(get_json)):
 	return paginate(
 		games_commands.get_easport_updates(data)
 	)
@@ -74,7 +83,8 @@ async def easport_updates(data: ResponseJson = Depends(get_json)):
 	status_code = status.HTTP_200_OK,
 	response_model = Page[games.EasportGame]
 )
-async def easport_games(detail: EasportTypeArticle, data: ResponseJson = Depends(get_json)):
+@limiter.limit("30/minute", per_method = True)
+async def easport_games(request: Request, detail: EasportTypeArticle, data: ResponseJson = Depends(get_json)):
 	return paginate(
 		games_commands.get_easport_games(data, detail = detail)
 	)
@@ -84,7 +94,8 @@ async def easport_games(detail: EasportTypeArticle, data: ResponseJson = Depends
 	status_code = status.HTTP_200_OK,
 	response_model = Page[games.IracingCars]
 )
-async def iracing_(data: ResponseJson = Depends(get_json)):
+@limiter.limit("30/minute", per_method = True)
+async def iracing_cars(request: Request, data: ResponseJson = Depends(get_json)):
 	return paginate(
 		games_commands.get_iracing_cars(data)
 	)
@@ -94,7 +105,8 @@ async def iracing_(data: ResponseJson = Depends(get_json)):
 	status_code = status.HTTP_200_OK,
 	response_model = Page[games.IracingTracks]
 )
-async def iracing_tracks(data: ResponseJson = Depends(get_json)):
+@limiter.limit("30/minute", per_method = True)
+async def iracing_tracks(request: Request, data: ResponseJson = Depends(get_json)):
 	return paginate(
 		games_commands.get_iracing_tracks(data)
 	)
@@ -104,7 +116,8 @@ async def iracing_tracks(data: ResponseJson = Depends(get_json)):
 	status_code = status.HTTP_200_OK,
 	response_model = Page[games.IracingSeasons]
 )
-async def iracing_seasons(data: ResponseJson = Depends(get_json)):
+@limiter.limit("30/minute", per_method = True)
+async def iracing_seasons(request: Request, data: ResponseJson = Depends(get_json)):
 	return paginate(
 		games_commands.get_iracing_seasons(data)
 	)
@@ -114,7 +127,8 @@ async def iracing_seasons(data: ResponseJson = Depends(get_json)):
 	status_code = status.HTTP_200_OK,
 	response_model = Page[games.IracingSeries]
 )
-async def iracing_series(data: ResponseJson = Depends(get_json)):
+@limiter.limit("30/minute", per_method = True)
+async def iracing_series(request: Request, data: ResponseJson = Depends(get_json)):
 	return paginate(
 		games_commands.get_iracing_series(data)
 	)
@@ -124,7 +138,8 @@ async def iracing_series(data: ResponseJson = Depends(get_json)):
 	status_code = status.HTTP_200_OK,
 	response_model = Page[games.IracingNews]
 )
-async def iracing_news(data: ResponseJson = Depends(get_json)):
+@limiter.limit("30/minute", per_method = True)
+async def iracing_news(request: Request, data: ResponseJson = Depends(get_json)):
 	return paginate(
 		games_commands.get_iracing_news(data)
 	)

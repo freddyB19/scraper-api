@@ -9,6 +9,7 @@ dependencies = [
     "fastapi[standard]>=0.134.0",
     "pydantic-settings>=2.13.1",
     "python-dotenv>=1.2.1",
+    "slowapi>=0.1.9",
     "strawberry-graphql[fastapi]>=0.307.1",
 ]
 

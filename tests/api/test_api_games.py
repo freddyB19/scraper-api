@@ -1,4 +1,4 @@
-import pprint
+import pprint, random
 from unittest.mock import patch
 
 import pytest
@@ -87,6 +87,28 @@ class TestAPIGameLol:
 
 		assert responseJson['links']['next'] is None
 		assert responseJson['links']['prev'] is None
+
+	@patch('routes.api.v1.games.sync_get_data', lambda: RESPONSE_JSON_GAMES)
+	@pytest.mark.parametrize(
+		"detail",
+		[
+			"notas",
+			"champions"
+		]
+	)
+	@pytest.mark.xfail(reason = "por superar el límite de solicitudes por minuto")
+	def test_lol_rate_limit(self, detail):
+		"""
+			Generar [Error 429] "GET [/lol/champions | /lol/:detail]" por límite de solicitudes/minuto
+		"""
+		
+		for _ in range(31):
+			response = client.get(f"{self.url}/{detail}", params = self.params)
+
+			responseJson = response.json()
+			responseStatus = response.status_code
+
+			assert responseStatus == STATUS_OK
 
 
 class TestAPIGameEasport:
@@ -191,6 +213,29 @@ class TestAPIGameEasport:
 		assert responseJson['links']['next'] is None
 		assert responseJson['links']['prev'] is None
 
+	@patch('routes.api.v1.games.sync_get_data', lambda: RESPONSE_JSON_GAMES)
+	@pytest.mark.parametrize(
+		"detail",
+		[
+			"news",
+			"soon",
+			"updates",
+		]
+	)
+	@pytest.mark.xfail(reason = "por superar el límite de solicitudes por minuto")
+	def test_easport_detail_rate_limit(self, detail):
+		"""
+			Generar [Error 429] "GET /easport/:detail" por límite de solicitudes/minuto
+		"""
+		
+		for _ in range(31):
+			response = client.get(f"{self.url}/{detail}", params = self.params)
+
+			responseJson = response.json()
+			responseStatus = response.status_code
+			assert responseStatus == STATUS_OK
+
+
 	@patch('routes.api.v1.games.sync_get_data', lambda: RESPONSE_EMPTY_JSON_GAMES)
 	@pytest.mark.parametrize(
 		"detail",
@@ -212,6 +257,27 @@ class TestAPIGameEasport:
 
 		assert responseJson['links']['next'] is None
 		assert responseJson['links']['prev'] is None
+
+	@patch('routes.api.v1.games.sync_get_data', lambda: RESPONSE_JSON_GAMES)
+	@pytest.mark.parametrize(
+		"detail",
+		[
+			"gratuitos",
+			"novedades",
+		]
+	)
+	@pytest.mark.xfail(reason = "por superar el límite de solicitudes por minuto")
+	def test_easport_games_detail_rate_limit(self, detail):
+		"""
+			Generar [Error 429] "GET /easport/games/:detail" por límite de solicitudes/minuto
+		"""
+		
+		for _ in range(31):
+			response = client.get(f"{self.url}/games/{detail}", params = self.params)
+
+			responseJson = response.json()
+			responseStatus = response.status_code
+			assert responseStatus == STATUS_OK
 
 
 class TestAPIGameIracing:
@@ -334,3 +400,24 @@ class TestAPIGameIracing:
 
 		assert responseJson['links']['next'] is None
 		assert responseJson['links']['prev'] is None
+
+	@patch('routes.api.v1.games.sync_get_data', lambda: RESPONSE_JSON_GAMES)
+	@pytest.mark.xfail(reason = "por superar el límite de solicitudes por minuto")
+	def test_iracing_detail_rate_limit(self):
+		"""
+			Generar [Error 429] "GET /iracing/:detail" por límite de solicitudes/minuto
+		"""
+		detail = random.choice([
+			"news", 
+			"cars",
+			"tracks",
+			"series",
+			"seasons"
+		])
+		
+		for _ in range(31):
+			response = client.get(f"{self.url}/{detail}", params = self.params)
+
+			responseJson = response.json()
+			responseStatus = response.status_code
+			assert responseStatus == STATUS_OK

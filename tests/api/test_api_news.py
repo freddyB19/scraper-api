@@ -68,6 +68,24 @@ class TestAPINewsMarca:
 		assert responseJson['links']['prev'] is None
 
 
+	@patch('routes.api.v1.news.sync_get_data', lambda: RESPONSE_JSON_NEWS)
+	@pytest.mark.xfail(reason = "por superar el límite de solicitudes por minuto")
+	def test_marca_games_rate_limit(self):
+		"""
+			Generar [Error 429] "GET /marca" por límite de solicitudes/minuto
+		"""
+		detail = "game"
+		
+		for _ in range(50):
+			response = client.get(f"{self.url}/{detail}", params = self.params)
+
+			responseJson = response.json()
+			responseStatus = response.status_code
+
+			assert responseStatus == STATUS_OK
+
+
+
 class TestAPINewsWired:
 	def setup_method(self):
 		self.url = f"{URL}/wired"
@@ -141,6 +159,22 @@ class TestAPINewsWired:
 
 		assert responseStatus == HTTP_422_UNPROCESSABLE
 
+	@patch('routes.api.v1.news.sync_get_data', lambda: RESPONSE_JSON_NEWS)
+	@pytest.mark.xfail(reason = "por superar el límite de solicitudes por minuto")
+	def test_wired_rate_limit(self):
+		"""
+			Generar [Error 429] "GET /wired/:detail" por límite de solicitudes/minuto
+		"""
+		detail = "robots"
+		
+		for _ in range(50):
+			response = client.get(f"{self.url}/{detail}", params = self.params)
+
+			responseJson = response.json()
+			responseStatus = response.status_code
+
+			assert responseStatus == STATUS_OK
+
 class TestAPINewsLaNacion:
 
 	def setup_method(self):
@@ -208,3 +242,19 @@ class TestAPINewsLaNacion:
 		responseStatus = response.status_code
 
 		assert responseStatus == HTTP_422_UNPROCESSABLE
+
+	@patch('routes.api.v1.news.sync_get_data', lambda: RESPONSE_JSON_NEWS)
+	@pytest.mark.xfail(reason = "por superar el límite de solicitudes por minuto")
+	def test_nacion_rate_limit(self):
+		"""
+			Generar [Error 429] "GET /nacion/:detail" por límite de solicitudes/minuto
+		"""
+		detail = "juegos"
+		
+		for _ in range(50):
+			response = client.get(f"{self.url}/{detail}", params = self.params)
+
+			responseJson = response.json()
+			responseStatus = response.status_code
+
+			assert responseStatus == STATUS_OK
