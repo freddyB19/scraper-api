@@ -17,6 +17,9 @@ dependencies = [
 testpaths = ["tests"]
 pythonpath = [".", "app"]
 
+[project.scripts]
+app = "app.main:app"
+
 
 [dependency-groups]
 dev = [
