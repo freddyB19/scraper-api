@@ -25,7 +25,7 @@ class TestAPIGameLol:
 
 	@patch('routes.api.v1.games.sync_get_data', lambda: RESPONSE_JSON_GAMES)	
 	def test_lol_champion(self):
-		detail = "champions"
+		detail = "champion"
 		
 		response = client.get(f"{self.url}/{detail}", params = self.params)
 
@@ -70,7 +70,7 @@ class TestAPIGameLol:
 		[
 			"notas",
 			"noticias",
-			"champions"
+			"champion"
 		]
 	)
 	def test_lol_articles_with_empty_values(self, detail):
@@ -93,7 +93,7 @@ class TestAPIGameLol:
 		"detail",
 		[
 			"notas",
-			"champions"
+			"champion"
 		]
 	)
 	@pytest.mark.xfail(reason = "por superar el límite de solicitudes por minuto")
@@ -114,6 +114,7 @@ class TestAPIGameLol:
 class TestAPIGameEasport:
 	def setup_method(self):
 		self.url = f"{URL}/easport"
+		self.url_games = f"{self.url}/game"
 		self.params = {"size": 5} # page
 
 	@patch('routes.api.v1.games.sync_get_data', lambda: RESPONSE_JSON_GAMES)
@@ -142,7 +143,7 @@ class TestAPIGameEasport:
 		]
 	)
 	def test_easport_games(self, detail):
-		response = client.get(f"{self.url}/games/{detail}", params = self.params)
+		response = client.get(f"{self.url_games}/{detail}", params = self.params)
 
 		responseJson = response.json()
 		responseStatus = response.status_code
@@ -175,7 +176,7 @@ class TestAPIGameEasport:
 
 	@patch('routes.api.v1.games.sync_get_data', lambda: RESPONSE_JSON_GAMES)
 	def test_easport_updates(self):
-		detail = "updates"
+		detail = "update"
 		response = client.get(f"{self.url}/{detail}", params = self.params)
 
 		responseJson = response.json()
@@ -196,7 +197,7 @@ class TestAPIGameEasport:
 		[
 			"news",
 			"soon",
-			"updates",
+			"update",
 		]
 	)
 	def test_easport_detail_with_empty_values(self, detail):
@@ -219,7 +220,7 @@ class TestAPIGameEasport:
 		[
 			"news",
 			"soon",
-			"updates",
+			"update",
 		]
 	)
 	@pytest.mark.xfail(reason = "por superar el límite de solicitudes por minuto")
@@ -246,7 +247,7 @@ class TestAPIGameEasport:
 	)
 	def test_easport_games_with_empty_values(self, detail):
 		without_values = 0
-		response = client.get(f"{self.url}/games/{detail}")
+		response = client.get(f"{self.url_games}/{detail}")
 
 		responseJson = response.json()
 		responseStatus = response.status_code
@@ -273,7 +274,7 @@ class TestAPIGameEasport:
 		"""
 		
 		for _ in range(31):
-			response = client.get(f"{self.url}/games/{detail}", params = self.params)
+			response = client.get(f"{self.url_games}/{detail}", params = self.params)
 
 			responseJson = response.json()
 			responseStatus = response.status_code
@@ -287,7 +288,7 @@ class TestAPIGameIracing:
 
 	@patch('routes.api.v1.games.sync_get_data', lambda: RESPONSE_JSON_GAMES)
 	def test_iracing_cars(self):
-		detail = "cars"
+		detail = "car"
 		total_elements = self.params['size']
 		
 		response = client.get(f"{self.url}/{detail}", params = self.params)
@@ -305,7 +306,7 @@ class TestAPIGameIracing:
 
 	@patch('routes.api.v1.games.sync_get_data', lambda: RESPONSE_JSON_GAMES)
 	def test_iracing_tracks(self):
-		detail = "tracks"
+		detail = "track"
 		total_elements = self.params['size']
 		
 		response = client.get(f"{self.url}/{detail}", params = self.params)
@@ -323,7 +324,7 @@ class TestAPIGameIracing:
 
 	@patch('routes.api.v1.games.sync_get_data', lambda: RESPONSE_JSON_GAMES)
 	def test_iracing_series(self):
-		detail = "series"
+		detail = "serie"
 		total_elements = self.params['size']
 		
 		response = client.get(f"{self.url}/{detail}", params = self.params)
@@ -341,7 +342,7 @@ class TestAPIGameIracing:
 
 	@patch('routes.api.v1.games.sync_get_data', lambda: RESPONSE_JSON_GAMES)
 	def test_iracing_seasons(self):
-		detail = "seasons"
+		detail = "season"
 		total_elements = self.params['size']
 		
 		response = client.get(f"{self.url}/{detail}", params = self.params)
@@ -380,10 +381,10 @@ class TestAPIGameIracing:
 		"detail",
 		[
 			"news", 
-			"cars",
-			"tracks",
-			"series",
-			"seasons"
+			"car",
+			"track",
+			"serie",
+			"season"
 		]
 	)
 	def test_iracing_with_empty_values(self, detail):
@@ -409,10 +410,10 @@ class TestAPIGameIracing:
 		"""
 		detail = random.choice([
 			"news", 
-			"cars",
-			"tracks",
-			"series",
-			"seasons"
+			"car",
+			"track",
+			"serie",
+			"season"
 		])
 		
 		for _ in range(31):

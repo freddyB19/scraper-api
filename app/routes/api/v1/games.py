@@ -26,7 +26,7 @@ limiter = Limiter(key_func=get_remote_address, strategy = "fixed-window")
 
 
 @router.get(
-	"/lol/champions",
+	"/lol/champion",
 	status_code = status.HTTP_200_OK,
 	response_model = Page[games.LOLChampion]
 )
@@ -68,7 +68,7 @@ async def easport_soon(request: Request, data: ResponseJson = Depends(get_json))
 	)
 
 @router.get(
-	"/easport/updates",
+	"/easport/update",
 	status_code = status.HTTP_200_OK,
 	response_model = Page[games.EasportUpdate]
 )
@@ -79,7 +79,7 @@ async def easport_updates(request: Request, data: ResponseJson = Depends(get_jso
 	)
 
 @router.get(
-	"/easport/games/{detail}",
+	"/easport/game/{detail}",
 	status_code = status.HTTP_200_OK,
 	response_model = Page[games.EasportGame]
 )
@@ -90,7 +90,7 @@ async def easport_games(request: Request, detail: EasportTypeArticle, data: Resp
 	)
 
 @router.get(
-	"/iracing/cars",
+	"/iracing/car",
 	status_code = status.HTTP_200_OK,
 	response_model = Page[games.IracingCars]
 )
@@ -101,7 +101,7 @@ async def iracing_cars(request: Request, data: ResponseJson = Depends(get_json))
 	)
 
 @router.get(
-	"/iracing/tracks",
+	"/iracing/track",
 	status_code = status.HTTP_200_OK,
 	response_model = Page[games.IracingTracks]
 )
@@ -112,7 +112,7 @@ async def iracing_tracks(request: Request, data: ResponseJson = Depends(get_json
 	)
 
 @router.get(
-	"/iracing/seasons",
+	"/iracing/season",
 	status_code = status.HTTP_200_OK,
 	response_model = Page[games.IracingSeasons]
 )
@@ -123,7 +123,7 @@ async def iracing_seasons(request: Request, data: ResponseJson = Depends(get_jso
 	)
 
 @router.get(
-	"/iracing/series",
+	"/iracing/serie",
 	status_code = status.HTTP_200_OK,
 	response_model = Page[games.IracingSeries]
 )
