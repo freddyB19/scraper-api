@@ -18,6 +18,8 @@ async def async_get_data() -> Response:
 		return []
 	except httpx.HTTPStatusError as e:
 		return []
+	except httpx.ConnectTimeout as e:
+		return []
 	
 	return responseJson
 
@@ -30,6 +32,8 @@ def sync_get_data() -> Response:
 	except httpx.ConnectError as e:
 		return []
 	except httpx.HTTPStatusError as e:
+		return []
+	except httpx.ConnectTimeout as e:
 		return []
 	
 	return responseJson
