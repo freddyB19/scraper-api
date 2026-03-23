@@ -47,6 +47,7 @@ class TestAPINewsMarca:
 		article = responseJson['items'][0]
 
 		assert list(article.keys()) == ["url", "meta", "author", "title", "image"]
+		assert None not in list(article.values())
 
 	@patch('routes.api.v1.news.sync_get_data', lambda: RESPONSE_EMPTY_JSON_NEWS)
 	def test_marca_games_with_empty_values(self):
@@ -118,6 +119,7 @@ class TestAPINewsWired:
 		note = responseJson['items'][0]
 
 		assert list(note.keys()) == ["url", "title", "image", "detail"]
+		assert None not in list(note.values())
 
 	@patch('routes.api.v1.news.sync_get_data', lambda: RESPONSE_EMPTY_JSON_NEWS)
 	@pytest.mark.parametrize(
@@ -205,6 +207,7 @@ class TestAPINewsLaNacion:
 		note = responseJson['items'][0]
 
 		assert list(note.keys()) == ["url", "date", "image", "title"]
+		assert None not in list(note.values())
 
 	@patch('routes.api.v1.news.sync_get_data', lambda: RESPONSE_EMPTY_JSON_NEWS)
 	@pytest.mark.parametrize(

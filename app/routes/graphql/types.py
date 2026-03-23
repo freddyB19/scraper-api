@@ -353,15 +353,15 @@ class WiredArticle(NodeConnection):
 	title: str | None
 	image: str | None
 	detail: str | None
-
+	
 def wired_format_articles(articles: list[Article]) -> list[Article]:
 	return [
 		WiredArticle(
 			code = index,
 			url = article.get("url"),
-			title = article.get("titulo"),
-			image = article.get("imagen"),
-			detail = article.get("resum"),
+			title = article.get("title"),
+			image = article.get("image"),
+			detail = article.get("summary"),
 		)
 		for index, article in enumerate(articles)
 	]

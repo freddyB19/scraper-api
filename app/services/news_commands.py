@@ -39,12 +39,13 @@ def get_wired_articles(data: Response, page: WiredPage) -> Iterable[news.WiredAr
 	news_name = "wired"
 	notes = get_data_news(data, name = news_name, page = type_pages[page])
 
+
 	return [
 		news.WiredArticle(
 			url = note.get("url"),
-			title = note.get("titulo"),
-			image = note.get("imagen"),
-			detail = note.get("resum"),
+			title = note.get("title"),
+			image = note.get("image"),
+			detail = note.get("summary"),
 		)
 		for note in notes
 	]

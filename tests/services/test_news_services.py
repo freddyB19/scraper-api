@@ -119,9 +119,9 @@ def test_get_news_wired_espacio(response_json):
 
 	detail = wired_espacio[0]
 
-	assert "titulo" in detail
-	assert "imagen" in detail
-	assert "resum" in detail
+	assert "title" in detail
+	assert "image" in detail
+	assert "summary" in detail
 	assert "url" in detail
 
 def test_get_news_wired_neurociencia(response_json):
@@ -134,9 +134,9 @@ def test_get_news_wired_neurociencia(response_json):
 
 	detail = wired_neuro[0]
 
-	assert "titulo" in detail
-	assert "imagen" in detail
-	assert "resum" in detail
+	assert "title" in detail
+	assert "image" in detail
+	assert "summary" in detail
 	assert "url" in detail
 
 def test_get_news_wired_biotecnologia(response_json):
@@ -149,9 +149,9 @@ def test_get_news_wired_biotecnologia(response_json):
 
 	detail = wired_biotec[0]
 
-	assert "titulo" in detail
-	assert "imagen" in detail
-	assert "resum" in detail
+	assert "title" in detail
+	assert "image" in detail
+	assert "summary" in detail
 	assert "url" in detail
 
 @pytest.mark.parametrize(

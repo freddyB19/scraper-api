@@ -251,9 +251,9 @@ RESPONSE_JSON_NEWS = [{
 						"nombre": "wired robots",
 						"pagina": [
 							{
-								"titulo": faker.text(),
-								"imagen": faker.image_url(),
-								"resum": faker.paragraph(),
+								"title": faker.text(),
+								"image": faker.image_url(),
+								"summary": faker.paragraph(),
 								"url": faker.url()
 							}
 							for _ in range(20)
@@ -263,9 +263,9 @@ RESPONSE_JSON_NEWS = [{
 						"nombre": "wired neurociencia",
 						"pagina": [
 							{
-								"titulo": faker.text(),
-								"imagen": faker.image_url(),
-								"resum": faker.paragraph(),
+								"title": faker.text(),
+								"image": faker.image_url(),
+								"summary": faker.paragraph(),
 								"url": faker.url()
 							}
 							for _ in range(20)
@@ -275,9 +275,9 @@ RESPONSE_JSON_NEWS = [{
 						"nombre": "wired biotecnolog\u00eda",
 						"pagina": [
 							{
-								"titulo": faker.text(),
-								"imagen": faker.image_url(),
-								"resum": faker.paragraph(),
+								"title": faker.text(),
+								"image": faker.image_url(),
+								"summary": faker.paragraph(),
 								"url": faker.url()
 							}
 							for _ in range(20)
@@ -287,9 +287,9 @@ RESPONSE_JSON_NEWS = [{
 						"nombre": "wired espacio",
 						"pagina": [
 							{
-								"titulo": faker.text(),
-								"imagen": faker.image_url(),
-								"resum": faker.paragraph(),
+								"title": faker.text(),
+								"image": faker.image_url(),
+								"summary": faker.paragraph(),
 								"url": faker.url()
 							}
 							for _ in range(20)

@@ -79,6 +79,7 @@ class TestNewsMarca:
 		assert "image" in article["node"]
 		assert "meta" in article["node"]
 		assert "author" in article["node"]
+		assert None not in article["node"].values()
 
 		assert "hasNextPage" in responseData[detail_news]["pageInfo"]
 		assert "hasPreviousPage" in responseData[detail_news]["pageInfo"]
@@ -129,6 +130,7 @@ class TestNewsLaNacion:
 		assert "date" in article["node"]
 		assert "image" in article["node"]
 		assert "title" in article["node"]
+		assert None not in article["node"].values()
 
 		assert "hasNextPage" in responseData[detail]["pageInfo"]
 		assert "hasPreviousPage" in responseData[detail]["pageInfo"]
@@ -185,6 +187,7 @@ class TestNewsWired:
 		assert "detail" in article["node"]
 		assert "image" in article["node"]
 		assert "title" in article["node"]
+		assert None not in article["node"].values()
 
 		assert "hasNextPage" in responseData[detail]["pageInfo"]
 		assert "hasPreviousPage" in responseData[detail]["pageInfo"]
