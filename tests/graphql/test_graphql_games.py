@@ -82,6 +82,7 @@ class TestGameLol:
 		assert "images" in champion["node"]
 		assert "name" in champion["node"]
 		assert "url" in champion["node"]
+		assert None not in champion["node"].values()
 
 		assert "hasNextPage" in responseData["champions"]["pageInfo"]
 		assert "hasPreviousPage" in responseData["champions"]["pageInfo"]
@@ -112,6 +113,7 @@ class TestGameLol:
 		assert "detail" in news["node"]
 		assert "title" in news["node"]
 		assert "url" in news["node"]
+		assert None not in news["node"].values()
 
 		assert "hasNextPage" in responseData[detail]["pageInfo"]
 		assert "hasPreviousPage" in responseData[detail]["pageInfo"]
@@ -141,6 +143,7 @@ class TestGameLol:
 		assert "detail" in note["node"]
 		assert "title" in note["node"]
 		assert "url" in note["node"]
+		assert None not in note["node"].values()
 
 		assert "hasNextPage" in responseData[detail]["pageInfo"]
 		assert "hasPreviousPage" in responseData[detail]["pageInfo"]
@@ -197,6 +200,7 @@ class TestGameEasport:
 		assert "logo" in detail_game["node"]
 		assert "title" in detail_game["node"]
 		assert "url" in detail_game["node"]
+		assert None not in detail_game["node"].values()
 
 		assert "hasNextPage" in responseData[detail]["pageInfo"]
 		assert "hasPreviousPage" in responseData[detail]["pageInfo"]
@@ -228,6 +232,7 @@ class TestGameEasport:
 		assert "image" in detail_game["node"]
 		assert "tag" in detail_game["node"]
 		assert "title" in detail_game["node"]
+		assert None not in detail_game["node"].values()
 
 		assert "hasNextPage" in responseData[detail]["pageInfo"]
 		assert "hasPreviousPage" in responseData[detail]["pageInfo"]
@@ -258,6 +263,7 @@ class TestGameEasport:
 		assert "logo" in detail_game["node"]
 		assert "title" in detail_game["node"]
 		assert "url" in detail_game["node"]
+		assert None not in detail_game["node"].values()
 
 		assert "hasNextPage" in responseData[detail]["pageInfo"]
 		assert "hasPreviousPage" in responseData[detail]["pageInfo"]
@@ -288,6 +294,7 @@ class TestGameEasport:
 		assert "date" in detail_game["node"]
 		assert "genre" in detail_game["node"]
 		assert "title" in detail_game["node"]
+		assert None not in detail_game["node"].values()
 
 		assert "hasNextPage" in responseData[detail]["pageInfo"]
 		assert "hasPreviousPage" in responseData[detail]["pageInfo"]
@@ -320,6 +327,7 @@ class TestGameEasport:
 		assert "info" in detail_game["node"]
 		assert "title" in detail_game["node"]
 		assert "url" in detail_game["node"]
+		assert None not in detail_game["node"].values()
 
 		assert "hasNextPage" in responseData[detail]["pageInfo"]
 		assert "hasPreviousPage" in responseData[detail]["pageInfo"]
@@ -377,6 +385,7 @@ class TestGameIracing:
 		assert "isNew" in detail_game["node"]
 		assert "type" in detail_game["node"]
 		assert "url" in detail_game["node"]
+		assert None not in detail_game["node"].values()
 
 		assert "hasNextPage" in responseData[detail]["pageInfo"]
 		assert "hasPreviousPage" in responseData[detail]["pageInfo"]
@@ -408,6 +417,7 @@ class TestGameIracing:
 		assert "isNew" in detail_game["node"]
 		assert "track" in detail_game["node"]
 		assert "url" in detail_game["node"]
+		assert None not in detail_game["node"].values()
 
 		assert "hasNextPage" in responseData[detail]["pageInfo"]
 		assert "hasPreviousPage" in responseData[detail]["pageInfo"]
@@ -467,6 +477,7 @@ class TestGameIracing:
 		assert "season" in detail_game["node"]
 		assert "seasonDate" in detail_game["node"]
 		assert "seasonUrl" in detail_game["node"]
+		assert None not in detail_game["node"].values()
 
 		assert "hasNextPage" in responseData[detail]["pageInfo"]
 		assert "hasPreviousPage" in responseData[detail]["pageInfo"]
@@ -499,6 +510,7 @@ class TestGameIracing:
 		assert "image" in detail_game["node"]
 		assert "title" in detail_game["node"]
 		assert "url" in detail_game["node"]
+		assert None not in detail_game["node"].values()
 
 		assert "hasNextPage" in responseData[detail]["pageInfo"]
 		assert "hasPreviousPage" in responseData[detail]["pageInfo"]

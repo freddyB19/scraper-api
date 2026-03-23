@@ -40,6 +40,7 @@ class TestAPIGameLol:
 		champion = responseJson['items'][0]
 
 		assert list(champion.keys()) == ["name", "url", "images"]
+		assert None not in list(champion.values())
 
 	@patch('routes.api.v1.games.sync_get_data', lambda: RESPONSE_JSON_GAMES)
 	@pytest.mark.parametrize(
@@ -63,7 +64,8 @@ class TestAPIGameLol:
 		article = responseJson['items'][0]
 		
 		assert list(article.keys()) == ["url", "date", "title", "detail", "category"]
-
+		assert None not in list(article.values())
+		
 	@patch('routes.api.v1.games.sync_get_data', lambda: RESPONSE_EMPTY_JSON_GAMES)
 	@pytest.mark.parametrize(
 		"detail",
@@ -133,7 +135,8 @@ class TestAPIGameEasport:
 		article = responseJson['items'][0]
 
 		assert list(article.keys()) == ['tag', 'date', 'image', 'title', 'detail']
-
+		assert None not in list(article.values())
+		
 	@patch('routes.api.v1.games.sync_get_data', lambda: RESPONSE_JSON_GAMES)
 	@pytest.mark.parametrize(
 		"detail",
@@ -156,7 +159,8 @@ class TestAPIGameEasport:
 		article = responseJson['items'][0]
 
 		assert list(article.keys()) == ["url", "logo", "image", "title"]
-
+		assert None not in list(article.values())
+		
 	@patch('routes.api.v1.games.sync_get_data', lambda: RESPONSE_JSON_GAMES)
 	def test_easport_soon(self):
 		detail = "soon"
@@ -173,7 +177,8 @@ class TestAPIGameEasport:
 		game = responseJson['items'][0]
 
 		assert list(game.keys()) == ["title", "date", "console", "genre"]
-
+		assert None not in list(game.values())
+		
 	@patch('routes.api.v1.games.sync_get_data', lambda: RESPONSE_JSON_GAMES)
 	def test_easport_updates(self):
 		detail = "update"
@@ -190,7 +195,8 @@ class TestAPIGameEasport:
 		note = responseJson['items'][0]
 
 		assert list(note.keys()) == ["url", "info", "date", "image", "title", "detail"]
-
+		assert None not in list(note.values())
+		
 	@patch('routes.api.v1.games.sync_get_data', lambda: RESPONSE_EMPTY_JSON_GAMES)
 	@pytest.mark.parametrize(
 		"detail",
@@ -303,7 +309,8 @@ class TestAPIGameIracing:
 		article = responseJson['items'][0]
 
 		assert list(article.keys()) == ["url", "type", "image", "is_new"]
-
+		assert None not in list(article.values())
+		
 	@patch('routes.api.v1.games.sync_get_data', lambda: RESPONSE_JSON_GAMES)
 	def test_iracing_tracks(self):
 		detail = "track"
@@ -321,7 +328,8 @@ class TestAPIGameIracing:
 		track = responseJson['items'][0]
 
 		assert list(track.keys()) == ["url", "track", "image", "is_new", "included"]
-
+		assert None not in list(track.values())
+		
 	@patch('routes.api.v1.games.sync_get_data', lambda: RESPONSE_JSON_GAMES)
 	def test_iracing_series(self):
 		detail = "serie"
@@ -339,7 +347,8 @@ class TestAPIGameIracing:
 		serie = responseJson['items'][0]
 
 		assert list(serie.keys()) == ["name", "type"]
-
+		assert None not in list(serie.values())
+		
 	@patch('routes.api.v1.games.sync_get_data', lambda: RESPONSE_JSON_GAMES)
 	def test_iracing_seasons(self):
 		detail = "season"
@@ -357,7 +366,8 @@ class TestAPIGameIracing:
 		season = responseJson['items'][0]
 
 		assert list(season.keys()) == ["image", "season", "season_url", "season_date", "is_latest"]
-
+		assert None not in list(season.values())
+		
 	@patch('routes.api.v1.games.sync_get_data', lambda: RESPONSE_JSON_GAMES)
 	def test_iracing_news(self):
 		detail = "news"
@@ -375,7 +385,8 @@ class TestAPIGameIracing:
 		article = responseJson['items'][0]
 
 		assert list(article.keys()) == ["url", "date", "title", "image", "detail", "author"]
-
+		assert None not in list(article.values())
+		
 	@patch('routes.api.v1.games.sync_get_data', lambda: RESPONSE_EMPTY_JSON_GAMES)
 	@pytest.mark.parametrize(
 		"detail",
