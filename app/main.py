@@ -7,7 +7,10 @@ from core.settings import config
 from routes.api.router import router
 from routes.graphql.schemas import graphql_app
 
-app = FastAPI()
+app = FastAPI(
+	docs_url="/docs",
+    openapi_url="/openapi.json"
+)
 
 app.add_middleware(
 	CORSMiddleware,
