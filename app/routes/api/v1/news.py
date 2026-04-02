@@ -14,7 +14,7 @@ from services.fetch import sync_get_data
 
 type ResponseJson = list[dict]
 type LaNacionTypeArticle = Literal['juegos', 'tecnologia']
-type WiredTypeArticle = Literal['espacio', 'robots', 'neurociencia', 'biotecnología']
+type WiredTypeArticle = Literal['espacio', 'robots', 'neurociencia', 'biotecnologia']
 
 
 router = APIRouter(prefix = "/news")

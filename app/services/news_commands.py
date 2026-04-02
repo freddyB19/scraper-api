@@ -8,7 +8,7 @@ from .news_services import get_data_news
 type Response = list[dict]
 type NewsData = list[dict[str, str]]
 type LaNacionPage = Literal['juegos', 'tecnologia']
-type WiredPage = Literal['espacio', 'robots', 'neurociencia', 'biotecnología']
+type WiredPage = Literal['espacio', 'robots', 'neurociencia', 'biotecnologia']
 
 
 
@@ -33,7 +33,7 @@ def get_wired_articles(data: Response, page: WiredPage) -> Iterable[news.WiredAr
 		'espacio': 'wired espacio', 
 		'robots': 'wired robots', 
 		'neurociencia': 'wired neurociencia', 
-		'biotecnología': 'wired biotecnología'
+		'biotecnologia': 'wired biotecnología'
 	}
 
 	news_name = "wired"
