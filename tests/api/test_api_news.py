@@ -99,7 +99,7 @@ class TestAPINewsWired:
 			"robots",
 			"espacio",
 			"neurociencia",
-			"biotecnología"
+			"biotecnologia"
 		]
 	)
 	def test_wired(self, detail):
@@ -128,7 +128,7 @@ class TestAPINewsWired:
 			"robots",
 			"espacio",
 			"neurociencia",
-			"biotecnología"
+			"biotecnologia"
 		]
 	)
 	def test_wired_with_empty_values(self, detail):

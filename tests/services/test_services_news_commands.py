@@ -51,7 +51,7 @@ class TestCommandNewsWired:
 			"robots",
 			"espacio",
 			"neurociencia",
-			"biotecnología"
+			"biotecnologia"
 		]
 	)
 	def test_command_get_wired(self, response_json, page):
@@ -71,7 +71,7 @@ class TestCommandNewsWired:
 			"robots",
 			"espacio",
 			"neurociencia",
-			"biotecnología"
+			"biotecnologia"
 		]
 	)
 	def test_command_get_wired(self, response_empty_json, page):
